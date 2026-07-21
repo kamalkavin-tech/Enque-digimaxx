@@ -1,0 +1,10 @@
+# keep the build context to just: Dockerfile, nginx.conf, site/
+tools
+.git
+.gitignore
+node_modules
+*.md
+.DS_Store
+Thumbs.db
+.vscode
+.idea

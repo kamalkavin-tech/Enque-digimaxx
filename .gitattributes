@@ -1,0 +1,5 @@
+# This repo is a PREBUILT static deployment artifact, not source to be edited.
+# Disable all end-of-line normalisation so the bytes that get checked out on the
+# Dokploy build host are byte-identical to the bundle that was tested. The asset
+# filenames are content hashes, and rive.wasm / *.riv must not be touched at all.
+* -text

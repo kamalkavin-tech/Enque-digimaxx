@@ -1,0 +1,17 @@
+# deps / build junk (none are used — this is a prebuilt static bundle)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# env
+.env
+.env.*
+!.env.example
