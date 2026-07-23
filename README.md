@@ -29,8 +29,24 @@ Create an **Application** → build type **Dockerfile**, then add a domain:
 |---|---|
 | Host | `clients.welocalhost.com` |
 | Path | `/bluecolorsite` |
-| Container Port | `80` |
+| Internal Path | `/` |
+| Container Port | `80` (recommended) — see note |
+| Strip Path | either (see below) |
 | HTTPS | on (Let's Encrypt) |
+
+### ⚠️ Container Port — the #1 cause of a 404 here
+
+Dokploy defaults **Container Port** to `3000` (it assumes a Node app). This nginx
+image listens on `80`. If Traefik forwards to a port nothing is listening on, the
+request never reaches nginx and you get a proxy error / 404-style failure — the
+site "deploys" fine but every request fails.
+
+Two ways to fix it, either is enough:
+
+1. **Set Container Port to `80`** in the domain dialog (recommended), **or**
+2. leave it at `3000` — this image now **also listens on `3000`**, so it works
+   either way. (`nginx.conf` has `listen 80; listen 3000;` and the Dockerfile
+   `EXPOSE 80 3000`.)
 
 **Strip Path does not matter here.** Traefik may or may not strip the
 `/bluecolorsite` prefix before forwarding depending on the middleware attached.
