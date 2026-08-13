@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact enque.ai | Build Your Digital Workforce</title>
+    <meta name="description" content="Tell enque.ai where your agency work slows down and design the first governed queue for your digital workforce.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../assets/style.BQmZbv3D.css">
+    <link rel="stylesheet" href="../assets/enque-experience.css">
+  </head>
+  <body class="contact-page">
+    <header class="contact-shell contact-nav">
+      <a href="../" aria-label="enque.ai home"><img src="../assets/viteplus-dark.Cy6PBzfr.svg" alt="enque.ai"></a>
+      <nav class="contact-nav-links" aria-label="Contact navigation">
+        <a href="../#platform">Platform</a>
+        <a href="../#modules">Modules</a>
+        <a href="https://github.com/kamalkavin-tech/Enque-digimaxx">Roadmap</a>
+        <a class="contact-nav-cta" href="mailto:hello@enque.ai">Email us</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="contact-shell contact-hero">
+        <span class="enque-visual-kicker">Start the queue</span>
+        <h1>Build the digital workforce your agency actually needs.</h1>
+        <p>Tell us where work slows down, where context gets lost, and which outcomes matter. We will use that to map the first governed Enque workflow for your agency.</p>
+      </section>
+
+      <section class="contact-shell contact-layout">
+        <article class="contact-card contact-card--dark">
+          <span class="enque-visual-kicker">What happens next</span>
+          <h2>From agency friction to a working queue.</h2>
+          <p>Enque is not a loose collection of AI tools. The conversation starts with a real service line, the context it needs, the controls it must follow, and the outcome it should improve.</p>
+          <div class="contact-steps">
+            <div class="contact-step"><b>1</b><div><strong>Discover the bottleneck</strong><p>Identify the repeated delay, handoff, or expertise gap.</p></div></div>
+            <div class="contact-step"><b>2</b><div><strong>Map work and context</strong><p>Connect people, conversations, files, histories, and existing systems.</p></div></div>
+            <div class="contact-step"><b>3</b><div><strong>Design governed execution</strong><p>Select skills, workflows, agents, approvals, evaluation, and learning.</p></div></div>
+          </div>
+          <p><strong>No sick days. No turnover. No notice period.</strong> A digital workforce that keeps agency knowledge and execution moving.</p>
+          <a class="contact-direct" href="mailto:hello@enque.ai">Prefer email? hello@enque.ai</a>
+        </article>
+
+        <article class="contact-card">
+          <span class="enque-visual-kicker">Request a conversation</span>
+          <h2>Tell us about your agency.</h2>
+          <form class="contact-form" id="contact-form">
+            <div class="contact-field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
+            <div class="contact-field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div class="contact-field"><label for="agency">Agency or company</label><input id="agency" name="agency" autocomplete="organization" required></div>
+            <div class="contact-field"><label for="team">Team size</label><select id="team" name="team"><option>1-10</option><option>11-50</option><option>51-200</option><option>201+</option></select></div>
+            <div class="contact-field contact-field--full"><label for="use-case">Where does work slow down today?</label><select id="use-case" name="use_case"><option>Prospects and opportunity qualification</option><option>RFPs and proposals</option><option>Projects and delivery operations</option><option>Content, media, or production</option><option>Marketplace or performance marketing</option><option>Knowledge, context, and search</option><option>Governance, security, or integrations</option><option>Another agency workflow</option></select></div>
+            <div class="contact-field contact-field--full"><label for="message">What would a better outcome look like?</label><textarea id="message" name="message" required placeholder="Describe the workflow, repeated handoffs, missing context, or result you want to improve."></textarea></div>
+            <button class="contact-submit" type="submit">Start the conversation</button>
+            <p class="contact-form-status" id="form-status" aria-live="polite"></p>
+          </form>
+        </article>
+      </section>
+
+      <section class="contact-promise">
+        <span class="enque-visual-kicker" style="color:#d8d1ff">The agency that never sleeps</span>
+        <h2>Discover → Plan → Execute → Measure → Improve → Learn</h2>
+      </section>
+    </main>
+
+    <footer class="contact-shell contact-footer">
+      <span>© 2026 enque.ai. All rights reserved.</span>
+      <span>The Digital Workforce for Agency that Never Sleeps</span>
+    </footer>
+
+    <script>
+      document.getElementById('contact-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const subject = `Enque conversation - ${data.get('agency')}`;
+        const body = [
+          `Name: ${data.get('name')}`,
+          `Work email: ${data.get('email')}`,
+          `Agency: ${data.get('agency')}`,
+          `Team size: ${data.get('team')}`,
+          `Primary use case: ${data.get('use_case')}`,
+          '',
+          'Desired outcome:',
+          data.get('message'),
+        ].join('\n');
+        document.getElementById('form-status').textContent = 'Opening your email app with the Enque brief prepared.';
+        window.location.href = `mailto:hello@enque.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    </script>
+  </body>
+</html>
