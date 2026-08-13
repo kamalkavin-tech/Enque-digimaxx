@@ -249,8 +249,8 @@
 .enque-pipeline { padding: clamp(2rem, 5vw, 5rem); background: #fff; }
 .enque-pipeline-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; }
 .enque-pipeline ol { display: grid; grid-template-columns: repeat(8, minmax(8rem, 1fr)); margin: 3rem 0 0; padding: 0 0 1rem; list-style: none; overflow-x: auto; }
-.enque-pipeline li { position: relative; min-height: 10rem; padding: 2.8rem 1rem 1rem; border-top: 2px solid #7650e7; border-left: 1px solid #dedbe8; }
-.enque-pipeline li b { position: absolute; top: -1.25rem; left: 1rem; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; color: #fff; border-radius: 50%; background: #6334db; }
+.enque-pipeline li { position: relative; min-height: 10rem; padding: 4.25rem 1rem 1rem; border-top: 2px solid #7650e7; border-left: 1px solid #dedbe8; }
+.enque-pipeline li b { position: absolute; top: .75rem; left: 1rem; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; color: #fff; border-radius: 50%; background: #6334db; }
 .enque-pipeline li span { font-weight: 750; }
 .enque-pipeline li small { display: block; margin-top: .7rem; color: #6c6875; font-weight: 500; }
 .enque-closure { padding: clamp(3rem, 7vw, 7rem); color: #fff; text-align: center; background: radial-gradient(circle at 50% 0, #6c36ee, #251052 55%, #100e16 100%); }

@@ -1,14 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
   <title id="title">enque.ai</title>
-  <defs>
-    <linearGradient id="enque-gradient" x1="10" y1="8" x2="54" y2="58" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#7C3AED"/>
-      <stop offset="1" stop-color="#4F16D8"/>
-    </linearGradient>
-  </defs>
-  <path fill="url(#enque-gradient)" d="M32 5C17.1 5 5 15.8 5 29.1c0 8.4 4.8 15.8 12.2 20.1l-1.6 9.7 11.1-5.9c1.7.3 3.5.5 5.3.5 14.9 0 27-10.9 27-24.3S46.9 5 32 5Z"/>
-  <path fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" d="M20.5 34.5c2.7 3.6 6.7 5.5 11.8 5.5 5.2 0 9.3-1.9 12.1-5.5"/>
-  <circle cx="22" cy="27" r="3" fill="#fff"/>
-  <circle cx="32" cy="27" r="3" fill="#fff"/>
-  <circle cx="42" cy="27" r="3" fill="#fff"/>
+  <rect width="64" height="64" rx="15" fill="#5B19E6"/>
+  <text x="32" y="47" fill="#fff" font-family="Arial Black,Arial,sans-serif" font-size="49" font-weight="900" text-anchor="middle">e</text>
 </svg>

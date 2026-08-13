@@ -233,12 +233,17 @@ html = html
   .replace(/\\"text\\":\\"Vite\\"/g, '\\"text\\":\\"Work\\"')
   .replace(/\\"text\\":\\"Vitest\\"/g, '\\"text\\":\\"Context\\"')
   .replace(/\\"text\\":\\"Rolldown\\"/g, '\\"text\\":\\"Intelligence\\"')
-  .replace(/\\"text\\":\\"Oxc\\"/g, '\\"text\\":\\"Control\\"');
+  .replace(/\\"text\\":\\"Oxc\\"/g, '\\"text\\":\\"Control\\"')
+  .replace(/\/bluecolorsite\/assets\/viteplus-dark\.[^"']+\.svg/g, '/bluecolorsite/assets/enque-logo-dark.svg?v=1')
+  .replace(/\/bluecolorsite\/assets\/viteplus-light\.[^"']+\.svg/g, '/bluecolorsite/assets/enque-logo-light.svg?v=1')
+  .replaceAll('class="h-4 block dark:hidden"', 'class="h-6 block dark:hidden"')
+  .replaceAll('class="h-4 hidden dark:block"', 'class="h-6 hidden dark:block"')
+  .replace(/\/bluecolorsite\/favicon\.svg(?:\?v=\d+)?/g, '/bluecolorsite/favicon.svg?v=2');
 
 html = html
   .replace(/\s*<link rel="stylesheet" href="\/bluecolorsite\/assets\/enque-experience\.css(?:\?v=\d+)?">/g, '')
   .replace(/\s*<script src="\/bluecolorsite\/assets\/enque-template-content\.js(?:\?v=\d+)?" defer><\/script>/g, '')
-  .replace('</head>', '    <link rel="stylesheet" href="/bluecolorsite/assets/enque-experience.css?v=5">\n    <script src="/bluecolorsite/assets/enque-template-content.js?v=5" defer></script>\n  </head>');
+  .replace('</head>', '    <link rel="stylesheet" href="/bluecolorsite/assets/enque-experience.css?v=6">\n    <script src="/bluecolorsite/assets/enque-template-content.js?v=6" defer></script>\n  </head>');
 writeFileSync(resolve(root, 'site/index.html'), html, 'utf8');
 
 const clientText = new Map([
