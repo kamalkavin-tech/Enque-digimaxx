@@ -198,6 +198,43 @@
 .enque-orchestration-tier p { color: #aaa5b4; font-size: .82rem; }
 .enque-loop { margin-top: 1rem; padding: 1rem; border: 1px dashed #5c4b8e; border-radius: .7rem; color: #c4b9ff; text-align: center; font: 600 .8rem ui-monospace, monospace; }
 
+/* PDF-grounded progress and closure content placed directly after Control. */
+#feature-run > div { min-height: 0 !important; }
+.enque-post-control { color: #08060d; background: #f8f7fc; border-top: 1px solid #dedbe8; }
+.enque-progress-head { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2rem; align-items: end; padding: clamp(2rem, 5vw, 5rem); }
+.enque-progress-head h2,
+.enque-pipeline h2,
+.enque-closure h2 { margin: .7rem 0 1rem; font-size: clamp(2.2rem, 4.5vw, 4.8rem); line-height: .96; letter-spacing: -.045em; }
+.enque-progress-head p,
+.enque-pipeline-copy p { max-width: 40rem; color: #6c6875; }
+.enque-progress-stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid #dedbe8; border-radius: .85rem; overflow: hidden; background: #fff; }
+.enque-progress-stats div { padding: 1.35rem .8rem; text-align: center; border-left: 1px solid #dedbe8; }
+.enque-progress-stats div:first-child { border-left: 0; }
+.enque-progress-stats strong { display: block; color: #6432db; font-size: clamp(1.8rem, 3vw, 3rem); line-height: 1; }
+.enque-progress-stats span { display: block; margin-top: .4rem; color: #6e6977; font-size: .76rem; }
+.enque-tier-progress { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #dedbe8; border-bottom: 1px solid #dedbe8; }
+.enque-tier-progress article { min-height: 21rem; padding: 2rem; border-left: 1px solid #dedbe8; border-top: 5px solid var(--accent); background: #fff; }
+.enque-tier-progress article:first-child { border-left: 0; }
+.enque-tier-progress small { color: var(--accent); font: 700 .7rem ui-monospace, monospace; letter-spacing: .07em; }
+.enque-tier-progress h3 { margin: 1rem 0 2rem; font-size: 1.45rem; }
+.enque-tier-progress b { color: var(--accent); font-size: .75rem; text-transform: uppercase; }
+.enque-tier-progress p { margin: .3rem 0 1.15rem; color: #696572; font-size: .86rem; }
+.enque-pipeline { padding: clamp(2rem, 5vw, 5rem); background: #fff; }
+.enque-pipeline-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; }
+.enque-pipeline ol { display: grid; grid-template-columns: repeat(8, minmax(8rem, 1fr)); margin: 3rem 0 0; padding: 0 0 1rem; list-style: none; overflow-x: auto; }
+.enque-pipeline li { position: relative; min-height: 10rem; padding: 2.8rem 1rem 1rem; border-top: 2px solid #7650e7; border-left: 1px solid #dedbe8; }
+.enque-pipeline li b { position: absolute; top: -1.25rem; left: 1rem; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; color: #fff; border-radius: 50%; background: #6334db; }
+.enque-pipeline li span { font-weight: 750; }
+.enque-pipeline li small { display: block; margin-top: .7rem; color: #6c6875; font-weight: 500; }
+.enque-closure { padding: clamp(3rem, 7vw, 7rem); color: #fff; text-align: center; background: radial-gradient(circle at 50% 0, #6c36ee, #251052 55%, #100e16 100%); }
+.enque-closure .enque-visual-kicker { color: #d4c8ff; }
+.enque-closure h2 { max-width: 60rem; margin-right: auto; margin-left: auto; color: #fff; }
+.enque-continuous-loop { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .7rem; margin: 2.5rem auto; }
+.enque-continuous-loop span { padding: .8rem 1rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; background: rgba(255,255,255,.07); font-weight: 750; }
+.enque-continuous-loop i { color: #a98dff; font-style: normal; }
+.enque-closure > p { max-width: 58rem; margin: 0 auto; color: #bbb5c7; }
+.enque-closure > p strong { color: #fff; }
+
 /* Homepage contact section — occupies the original template's final canvas slot. */
 .enque-home-contact {
   display: grid;
@@ -234,7 +271,17 @@
   .enque-data-arrow { transform: rotate(90deg); text-align: center; }
   .enque-orchestration-head { display: block; }
   .enque-orchestration-head p { margin-top: 1rem; }
+  .enque-progress-head,
+  .enque-pipeline-copy { grid-template-columns: 1fr; }
+  .enque-progress-stats,
+  .enque-tier-progress { grid-template-columns: repeat(2, 1fr); }
+  .enque-tier-progress article { min-height: auto; border-bottom: 1px solid #dedbe8; }
   .enque-home-contact { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .enque-progress-stats,
+  .enque-tier-progress { grid-template-columns: 1fr; }
 }
 
 /* Contact page */

@@ -238,7 +238,7 @@ html = html
 html = html
   .replace(/\s*<link rel="stylesheet" href="\/bluecolorsite\/assets\/enque-experience\.css(?:\?v=\d+)?">/g, '')
   .replace(/\s*<script src="\/bluecolorsite\/assets\/enque-template-content\.js(?:\?v=\d+)?" defer><\/script>/g, '')
-  .replace('</head>', '    <link rel="stylesheet" href="/bluecolorsite/assets/enque-experience.css?v=3">\n    <script src="/bluecolorsite/assets/enque-template-content.js?v=3" defer></script>\n  </head>');
+  .replace('</head>', '    <link rel="stylesheet" href="/bluecolorsite/assets/enque-experience.css?v=4">\n    <script src="/bluecolorsite/assets/enque-template-content.js?v=4" defer></script>\n  </head>');
 writeFileSync(resolve(root, 'site/index.html'), html, 'utf8');
 
 const clientText = new Map([
@@ -478,6 +478,35 @@ html = html
 html = html.replace(
   /(<img src="\/bluecolorsite\/assets\/footer-background\.[^"]+\.jpg"[^>]*?)loading="lazy"/,
   '$1loading="eager" fetchpriority="high"',
+);
+
+html = html.replace(/<section id="progress" class="wrapper enque-post-control">[\s\S]*?<\/section>(?=<\/section>)/, '');
+
+const postControlMarkup = `<section id="progress" class="wrapper enque-post-control">
+  <header class="enque-progress-head">
+    <div><span class="enque-visual-kicker">THE PROGRESS SO FAR</span><h2>The difficult foundation is already running.</h2><p>We built the foundation first. Now we are expanding it into the complete Enque Digital Workforce.</p></div>
+    <div class="enque-progress-stats"><div><strong>111</strong><span>Skills</span></div><div><strong>47</strong><span>Workflows</span></div><div><strong>78</strong><span>Tools</span></div><div><strong>51</strong><span>Use cases</span></div></div>
+  </header>
+  <div class="enque-tier-progress">
+    <article style="--accent:#6535df"><small>TIER 1 - WORK</small><h3>Value creation</h3><b>Built</b><p>Proposals and Projects</p><b>Next</b><p>Prospects and expandable service-line modules</p></article>
+    <article style="--accent:#1473e6"><small>TIER 2 - CONTEXT</small><h3>Shared understanding</h3><b>Under development</b><p>Knowledge Base, Communication Hub, histories, Files &amp; Data, Search &amp; Insights</p></article>
+    <article style="--accent:#7135d7"><small>TIER 3 - INTELLIGENCE</small><h3>Governed execution</h3><b>Built</b><p>Skills, Workflows and Memory</p><b>Next</b><p>Routing, evaluation, learning, reasoning and planning</p></article>
+    <article style="--accent:#1682e9"><small>TIER 4 - CONTROL</small><h3>Accountability</h3><b>Built</b><p>Roles, Agency Admin, APIs &amp; Integrations</p><b>Next</b><p>Platform Admin, isolation and Audit Logs</p></article>
+  </div>
+  <div class="enque-pipeline">
+    <div class="enque-pipeline-copy"><span class="enque-visual-kicker">THE DEVELOPMENT PIPELINE</span><h2>The foundation is complete. The workspace expands from here.</h2><p>Tracks run in parallel across Work, Context, Intelligence, and Control.</p></div>
+    <ol><li><b>0</b><span>Foundation<small>Complete</small></span></li><li><b>1</b><span>Client Deliverables<small>2 weeks</small></span></li><li><b>2</b><span>Knowledge Base<small>4 weeks</small></span></li><li><b>3</b><span>Production Studio<small>3 weeks</small></span></li><li><b>4</b><span>Module Promotion<small>3 weeks</small></span></li><li><b>5</b><span>Prospects<small>2 weeks</small></span></li><li><b>6</b><span>Content, Media &amp; RFP<small>6 weeks</small></span></li><li><b>7</b><span>Platform Completion<small>3 weeks</small></span></li></ol>
+  </div>
+  <div class="enque-closure">
+    <span class="enque-visual-kicker">THE AGENCY THAT NEVER SLEEPS</span><h2>Every completed engagement makes the next run better.</h2>
+    <div class="enque-continuous-loop"><span>Discover</span><i>&rarr;</i><span>Plan</span><i>&rarr;</i><span>Execute</span><i>&rarr;</i><span>Measure</span><i>&rarr;</i><span>Improve</span><i>&rarr;</i><span>Learn</span></div>
+    <p><strong>Work</strong> enters the queue. <strong>Context</strong> gives it meaning. <strong>Intelligence</strong> moves it forward. <strong>Control</strong> keeps it accountable. <strong>Learning</strong> makes the next run better.</p>
+  </div>
+</section>`;
+
+html = html.replace(
+  /(<section id="feature-run"[\s\S]*?<\/section>)(?=<\/section>)/,
+  `$1${postControlMarkup}`,
 );
 
 const homeContactMarkup = `<section id="contact" class="wrapper enque-home-contact">
