@@ -243,7 +243,7 @@ html = html
 html = html
   .replace(/\s*<link rel="stylesheet" href="\/bluecolorsite\/assets\/enque-experience\.css(?:\?v=\d+)?">/g, '')
   .replace(/\s*<script src="\/bluecolorsite\/assets\/enque-template-content\.js(?:\?v=\d+)?" defer><\/script>/g, '')
-  .replace('</head>', '    <link rel="stylesheet" href="/bluecolorsite/assets/enque-experience.css?v=6">\n    <script src="/bluecolorsite/assets/enque-template-content.js?v=6" defer></script>\n  </head>');
+  .replace('</head>', '    <link rel="stylesheet" href="/bluecolorsite/assets/enque-experience.css?v=7">\n    <script src="/bluecolorsite/assets/enque-template-content.js?v=7" defer></script>\n  </head>');
 writeFileSync(resolve(root, 'site/index.html'), html, 'utf8');
 
 const clientText = new Map([
