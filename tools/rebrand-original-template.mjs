@@ -235,7 +235,10 @@ html = html
   .replace(/\\"text\\":\\"Rolldown\\"/g, '\\"text\\":\\"Intelligence\\"')
   .replace(/\\"text\\":\\"Oxc\\"/g, '\\"text\\":\\"Control\\"');
 
-html = html.replace('</head>', '    <link rel="stylesheet" href="/bluecolorsite/assets/enque-experience.css">\n    <script src="/bluecolorsite/assets/enque-template-content.js" defer></script>\n  </head>');
+html = html
+  .replace(/\s*<link rel="stylesheet" href="\/bluecolorsite\/assets\/enque-experience\.css(?:\?v=\d+)?">/g, '')
+  .replace(/\s*<script src="\/bluecolorsite\/assets\/enque-template-content\.js(?:\?v=\d+)?" defer><\/script>/g, '')
+  .replace('</head>', '    <link rel="stylesheet" href="/bluecolorsite/assets/enque-experience.css?v=3">\n    <script src="/bluecolorsite/assets/enque-template-content.js?v=3" defer></script>\n  </head>');
 writeFileSync(resolve(root, 'site/index.html'), html, 'utf8');
 
 const clientText = new Map([
@@ -471,6 +474,11 @@ html = html.replace(/(<a\b[^>]*href="contact\/"[^>]*)\s+target="_blank"/g, '$1')
 html = html
   .replace(/\s*<script type="module" src="\/bluecolorsite\/assets\/app\.[^"]+\.js"><\/script>/, '')
   .replace(/\s*<link rel="modulepreload" href="\/bluecolorsite\/assets\/(?:chunks\/)?[^"]+">/g, '');
+
+html = html.replace(
+  /(<img src="\/bluecolorsite\/assets\/footer-background\.[^"]+\.jpg"[^>]*?)loading="lazy"/,
+  '$1loading="eager" fetchpriority="high"',
+);
 
 const homeContactMarkup = `<section id="contact" class="wrapper enque-home-contact">
   <div class="enque-home-contact__copy">
