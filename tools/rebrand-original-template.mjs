@@ -238,7 +238,7 @@ html = html
 html = html
   .replace(/\s*<link rel="stylesheet" href="\/bluecolorsite\/assets\/enque-experience\.css(?:\?v=\d+)?">/g, '')
   .replace(/\s*<script src="\/bluecolorsite\/assets\/enque-template-content\.js(?:\?v=\d+)?" defer><\/script>/g, '')
-  .replace('</head>', '    <link rel="stylesheet" href="/bluecolorsite/assets/enque-experience.css?v=4">\n    <script src="/bluecolorsite/assets/enque-template-content.js?v=4" defer></script>\n  </head>');
+  .replace('</head>', '    <link rel="stylesheet" href="/bluecolorsite/assets/enque-experience.css?v=5">\n    <script src="/bluecolorsite/assets/enque-template-content.js?v=5" defer></script>\n  </head>');
 writeFileSync(resolve(root, 'site/index.html'), html, 'utf8');
 
 const clientText = new Map([
@@ -508,6 +508,44 @@ html = html.replace(
   /(<section id="feature-run"[\s\S]*?<\/section>)(?=<\/section>)/,
   `$1${postControlMarkup}`,
 );
+
+const replaceSectionById = (source, id, replacement) => {
+  const start = source.indexOf(`<section id="${id}"`);
+  if (start < 0) return source;
+  const sectionTag = /<section\b|<\/section>/g;
+  sectionTag.lastIndex = start;
+  let depth = 0;
+  let match;
+  while ((match = sectionTag.exec(source))) {
+    if (match[0] === '<section') depth += 1;
+    else depth -= 1;
+    if (depth === 0) return source.slice(0, start) + replacement + source.slice(sectionTag.lastIndex);
+  }
+  return source;
+};
+
+const systemFeaturesMarkup = `<section id="features" class="wrapper enque-system-features">
+  <nav class="enque-system-tabs" aria-label="Enque system tiers"><a href="#work">work</a><a href="#context">context</a><a href="#intelligence">intelligence</a><a href="#control">control</a><a href="#progress">learning</a></nav>
+  <header class="enque-system-intro"><span class="enque-visual-kicker">THE COMPLETE ENQUE SYSTEM</span><h2>Everything your agency needs in one connected workforce.</h2><p>Work creates value. Context creates understanding. Intelligence moves work forward. Control keeps every action governed.</p></header>
+  <article id="work" class="enque-system-row" style="--row-accent:#8b55ff">
+    <div class="enque-system-copy"><small>TIER 1 - WORK</small><h3>Demand to delivery in one connected queue</h3><p>Move opportunities through prospects, proposals, projects, specialist delivery, outcomes, and learning.</p><ul><li>Prospects discover and qualify demand</li><li>Proposals turn opportunity into scope</li><li>Projects coordinate delivery</li><li>Expandable modules add every agency service</li></ul></div>
+    <div class="enque-system-visual"><span>WORK EXECUTION</span><div class="enque-module-map"><b>Prospects</b><i>&rarr;</i><b>Proposals</b><i>&rarr;</i><b>Projects</b><i>&rarr;</i><b>Delivery</b></div><p>RFP - Production Studio - Content - Media - Marketplace - Performance</p></div>
+  </article>
+  <article id="context" class="enque-system-row" style="--row-accent:#2187e8">
+    <div class="enque-system-copy"><small>TIER 2 - CONTEXT</small><h3>Shared context across every module</h3><p>Every task begins with the conversations, knowledge, histories, files, and insights required to understand it.</p><ul><li>Knowledge Base and Communication Hub</li><li>Client History and Project History</li><li>Files &amp; Data remain connected</li><li>Search &amp; Insights make context retrievable</li></ul></div>
+    <div class="enque-system-visual"><span>THE SECOND BRAIN</span><div class="enque-context-grid"><b>Communication</b><b>Knowledge</b><b>Client History</b><b>Project History</b><b>Files &amp; Data</b><b>Search &amp; Insights</b></div><p>One shared context, available to every Work module.</p></div>
+  </article>
+  <article id="intelligence" class="enque-system-row" style="--row-accent:#ff7d32">
+    <div class="enque-system-copy"><small>TIER 3 - INTELLIGENCE</small><h3>Reusable intelligence made practical</h3><p>Select skills, route agents and modules, execute workflows, preserve memory, and improve through evaluation.</p><ul><li>111 reusable Skills</li><li>47 executable Workflows</li><li>Memory preserves operational context</li><li>Routing, reasoning, evaluation, and learning improve outcomes</li></ul></div>
+    <div class="enque-system-visual"><span>OPERATIONAL INTELLIGENCE</span><div class="enque-context-grid"><b>Skills</b><b>Workflows</b><b>Memory</b><b>Routing</b><b>Evaluation</b><b>Reasoning</b></div><p>Turns shared context into governed action across Work.</p></div>
+  </article>
+  <article id="control" class="enque-system-row" style="--row-accent:#18a77b">
+    <div class="enque-system-copy"><small>TIER 4 - CONTROL</small><h3>Governance across every tier and action</h3><p>Apply roles, permissions, administration, integrations, security, and auditability across the complete system.</p><ul><li>Role-based access applies across all tiers</li><li>Human approvals remain part of critical actions</li><li>Every run stays traceable and reviewable</li><li>New services inherit the same control layer</li></ul></div>
+    <div class="enque-system-visual"><span>CONTROL PANEL</span><div class="enque-context-grid"><b>Roles</b><b>Agency Admin</b><b>APIs</b><b>Platform Admin</b><b>Security</b><b>Audit Logs</b></div><p>Control applies across every layer, module, agent, and action.</p></div>
+  </article>
+</section>${postControlMarkup}`;
+
+html = replaceSectionById(html, 'features', systemFeaturesMarkup);
 
 const homeContactMarkup = `<section id="contact" class="wrapper enque-home-contact">
   <div class="enque-home-contact__copy">

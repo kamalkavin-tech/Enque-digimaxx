@@ -198,6 +198,33 @@
 .enque-orchestration-tier p { color: #aaa5b4; font-size: .82rem; }
 .enque-loop { margin-top: 1rem; padding: 1rem; border: 1px dashed #5c4b8e; border-radius: .7rem; color: #c4b9ff; text-align: center; font: 600 .8rem ui-monospace, monospace; }
 
+/* Static replacement for the hydration-dependent Vite+ feature region. */
+.enque-system-features { color: #fff; background: #15141b; border-top: 1px solid #37343e; }
+.enque-system-tabs { position: sticky; top: 0; z-index: 10; display: grid; grid-template-columns: repeat(5, 1fr); background: #15141b; border-bottom: 1px solid #3a3641; }
+.enque-system-tabs a { padding: 1rem; color: #a29cae; text-align: center; text-decoration: none; font: 600 .78rem ui-monospace, monospace; border-left: 1px solid #3a3641; }
+.enque-system-tabs a:first-child { border-left: 0; }
+.enque-system-tabs a:hover { color: #fff; background: #1c1a23; }
+.enque-system-intro { padding: clamp(3rem, 7vw, 7rem) clamp(2rem, 5vw, 5rem); text-align: center; border-bottom: 1px solid #3a3641; }
+.enque-system-intro .enque-visual-kicker { color: #b9a9ff; }
+.enque-system-intro h2 { max-width: 65rem; margin: .8rem auto 1rem; color: #fff; font-size: clamp(2.5rem, 5vw, 5rem); line-height: .95; letter-spacing: -.05em; }
+.enque-system-intro p { max-width: 48rem; margin: 0 auto; color: #aaa5b4; }
+.enque-system-row { display: grid; grid-template-columns: 1fr 1fr; min-height: 30rem; border-bottom: 1px solid #3a3641; }
+.enque-system-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 5vw, 5rem); }
+.enque-system-copy small,
+.enque-system-visual > span { color: var(--row-accent); font: 700 .72rem ui-monospace, monospace; letter-spacing: .08em; }
+.enque-system-copy h3 { max-width: 38rem; margin: .75rem 0 1rem; color: #fff; font-size: clamp(2rem, 3.8vw, 3.8rem); line-height: 1; letter-spacing: -.035em; }
+.enque-system-copy > p { max-width: 36rem; color: #aaa5b4; }
+.enque-system-copy ul { display: grid; gap: .7rem; margin: 1.7rem 0 0; padding: 0; list-style: none; }
+.enque-system-copy li { color: #ddd9e3; }
+.enque-system-copy li::before { content: '✓'; display: inline-grid; place-items: center; width: 1.25rem; height: 1.25rem; margin-right: .65rem; color: #fff; border: 1px solid var(--row-accent); border-radius: 50%; font-size: .65rem; }
+.enque-system-visual { display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 5vw, 5rem); overflow: hidden; border-left: 1px solid #3a3641; background: radial-gradient(circle at 90% 0, color-mix(in srgb, var(--row-accent) 38%, transparent), transparent 55%), #111016; }
+.enque-system-visual > p { margin-top: 1.25rem; color: #8f899a; font-size: .84rem; }
+.enque-module-map { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; margin-top: 1.7rem; }
+.enque-module-map b,
+.enque-context-grid b { padding: 1rem; color: #fff; border: 1px solid color-mix(in srgb, var(--row-accent) 70%, #4a4652); border-top: 4px solid var(--row-accent); border-radius: .65rem; background: #1a1820; font-size: .86rem; text-align: center; }
+.enque-module-map i { color: var(--row-accent); font-style: normal; }
+.enque-context-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .65rem; margin-top: 1.7rem; }
+
 /* PDF-grounded progress and closure content placed directly after Control. */
 #feature-run > div { min-height: 0 !important; }
 .enque-post-control { color: #08060d; background: #f8f7fc; border-top: 1px solid #dedbe8; }
@@ -273,6 +300,9 @@
   .enque-orchestration-head p { margin-top: 1rem; }
   .enque-progress-head,
   .enque-pipeline-copy { grid-template-columns: 1fr; }
+  .enque-system-row { grid-template-columns: 1fr; min-height: 0; }
+  .enque-system-visual { min-height: 24rem; border-top: 1px solid #3a3641; border-left: 0; }
+  .enque-context-grid { grid-template-columns: repeat(2, 1fr); }
   .enque-progress-stats,
   .enque-tier-progress { grid-template-columns: repeat(2, 1fr); }
   .enque-tier-progress article { min-height: auto; border-bottom: 1px solid #dedbe8; }
