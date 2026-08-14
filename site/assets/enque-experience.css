@@ -1,3 +1,16 @@
+.marketing-layout {
+  width: 100%;
+  max-width: none;
+  overflow-x: clip;
+}
+
+/* Let the marketing grid use the viewport instead of the template's 90rem cap. */
+.marketing-layout .wrapper {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
 .enque-queue-console {
   min-height: 28rem;
   padding: clamp(1.25rem, 3vw, 2.5rem) !important;
