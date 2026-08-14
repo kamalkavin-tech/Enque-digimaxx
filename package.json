@@ -1,0 +1,17 @@
+{
+  "name": "bluecolorsite",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:silk",
+    "build:silk": "esbuild src/silk-entry.jsx --bundle --minify --outfile=site/assets/silk-background.js"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^9.3.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "three": "^0.179.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.9"
+  }
+}

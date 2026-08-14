@@ -594,3 +594,5 @@
   }, 300);
   setTimeout(() => observer.disconnect(), 8000);
 })();
+
+import('/bluecolorsite/assets/silk-background.js');
