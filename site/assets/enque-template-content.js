@@ -293,6 +293,8 @@
   };
 
   const patchControls = () => {
+    const demo = [...document.querySelectorAll('a.button')].find((link) => link.textContent.trim() === 'Request a Demo');
+    demo?.parentElement?.classList.add('enque-hero-actions');
     document.querySelectorAll('button[aria-label*="install command"]').forEach((button) => {
       const card = button.closest('.rounded-xl');
       const label = card?.querySelector('.uppercase')?.textContent.trim() || 'Enque information';
@@ -307,6 +309,39 @@
         document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, true);
     }
+  };
+
+  const pillarMarkup = `
+    <article class="enque-pillar" style="--pillar-accent:#7045e8">
+      <div class="enque-pillar__top"><div class="enque-pillar__label"><span class="enque-pillar__mark">01</span>Enque Work</div><h3>One queue from demand to delivery.</h3><p>Prospects become proposals, projects, production, and measurable outcomes without losing ownership or momentum.</p></div>
+      <div class="enque-pillar__flow"><span>Prospects</span><span>Proposals</span><span>Projects</span><span>Production</span></div>
+      <div class="enque-pillar__outcome">Expandable work modules</div>
+    </article>
+    <article class="enque-pillar" style="--pillar-accent:#2385d8">
+      <div class="enque-pillar__top"><div class="enque-pillar__label"><span class="enque-pillar__mark">02</span>Enque Context</div><h3>Shared context travels with the work.</h3><p>Conversations, knowledge, histories, files, and insights remain connected to every client, project, person, and agent.</p></div>
+      <div class="enque-pillar__flow"><span>Knowledge</span><span>Communication</span><span>Histories</span><span>Files &amp; Data</span></div>
+      <div class="enque-pillar__outcome">One durable agency memory</div>
+    </article>
+    <article class="enque-pillar" style="--pillar-accent:#ef7130">
+      <div class="enque-pillar__top"><div class="enque-pillar__label"><span class="enque-pillar__mark">03</span>Enque Intelligence</div><h3>A reusable digital workforce that learns.</h3><p>Skills, workflows, memory, routing, reasoning, and evaluation coordinate execution while Enque Control governs every action.</p></div>
+      <div class="enque-pillar__flow"><span>Skills</span><span>Workflows</span><span>Memory</span><span>Learning</span></div>
+      <div class="enque-pillar__outcome">Governed by Enque Control</div>
+    </article>`;
+
+  const patchPlatformPillars = () => {
+    const heading = [...document.querySelectorAll('h5')].find((node) => node.textContent.trim() === 'Unifies agency work from demand to delivery');
+    const section = heading?.closest('section');
+    if (!section || section.classList.contains('enque-pillars')) return;
+    section.className = 'wrapper enque-pillars';
+    section.setAttribute('aria-label', 'The Enque platform');
+    section.innerHTML = pillarMarkup;
+  };
+
+  const patchLegacyTestGraphic = () => {
+    const legacy = document.querySelector('img[src*="test.DqwICtpI.svg"]');
+    const panel = legacy?.closest('.bg-slate');
+    if (!panel || panel.querySelector('.enque-evaluation-visual')) return;
+    panel.innerHTML = `<div class="enque-evaluation-visual"><div class="enque-evaluation-visual__head"><strong>Outcome evaluation</strong><span>LEARNING APPROVED</span></div><div class="enque-evaluation-grid"><div><small>Context</small><b>Client history connected</b></div><div><small>Quality</small><b>Standards verified</b></div><div><small>Governance</small><b>Approval recorded</b></div><div><small>Memory</small><b>Next run updated</b></div></div><div class="enque-evaluation-result">Measured outcomes return to shared agency intelligence</div></div>`;
   };
 
   const patchStats = () => {
@@ -422,6 +457,8 @@
 
   const patchExperience = () => {
     patchHeroConsole();
+    patchPlatformPillars();
+    patchLegacyTestGraphic();
     replaceCardVisual('Agency expertise that compounds at scale', 'The second brain', 'Capture, organise and retrieve agency knowledge.', [
       ['Capture', 'Conversations, documents and outcomes enter the system'],
       ['Organise', 'Knowledge connects to the correct client and project'],
