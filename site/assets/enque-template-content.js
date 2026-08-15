@@ -344,6 +344,49 @@
     panel.innerHTML = `<div class="enque-evaluation-visual"><div class="enque-evaluation-visual__head"><strong>Outcome evaluation</strong><span>LEARNING APPROVED</span></div><div class="enque-evaluation-grid"><div><small>Context</small><b>Client history connected</b></div><div><small>Quality</small><b>Standards verified</b></div><div><small>Governance</small><b>Approval recorded</b></div><div><small>Memory</small><b>Next run updated</b></div></div><div class="enque-evaluation-result">Measured outcomes return to shared agency intelligence</div></div>`;
   };
 
+  const footerMarkup = `
+    <section class="enque-roadmap" id="roadmap">
+      <div class="enque-roadmap__copy">
+        <span class="enque-footer-kicker">Built foundation / expanding workforce</span>
+        <h2>The foundation is live. The workforce keeps expanding.</h2>
+        <p>Enque already connects governed agents, reusable intelligence, shared context, and delivered use cases. The roadmap turns that foundation into a complete digital workforce for every agency service.</p>
+        <div class="enque-footer-actions"><a class="enque-footer-button enque-footer-button--primary" href="https://github.com/kamalkavin-tech/Enque-digimaxx" target="_blank" rel="noopener noreferrer">View the roadmap <span aria-hidden="true">↗</span></a><a class="enque-footer-button" href="#modules">Explore modules <span aria-hidden="true">↓</span></a></div>
+      </div>
+      <div class="enque-roadmap__status" aria-label="Enque platform status">
+        <div class="enque-status-head"><div><span class="enque-live-dot"></span>Platform foundation online</div><small>ENQUE / 2026</small></div>
+        <div class="enque-status-stack">
+          <div style="--status-color:#8a52ff"><span>01</span><strong>Work</strong><small>Demand to delivery</small><b>LIVE</b></div>
+          <div style="--status-color:#2687e8"><span>02</span><strong>Context</strong><small>Shared agency memory</small><b>LIVE</b></div>
+          <div style="--status-color:#ff8238"><span>03</span><strong>Intelligence</strong><small>Skills and workflows</small><b>EXPANDING</b></div>
+          <div style="--status-color:#19a774"><span>04</span><strong>Control</strong><small>Governance and security</small><b>LIVE</b></div>
+        </div>
+        <div class="enque-status-foot"><span>One platform</span><i></i><span>Expandable by design</span></div>
+      </div>
+    </section>
+    <section class="enque-final-cta">
+      <div class="enque-final-cta__brand"><img src="/bluecolorsite/icon.svg" alt=""><span>THE AGENCY THAT NEVER SLEEPS</span></div>
+      <h2>Your agency keeps moving—even when your team is offline.</h2>
+      <p>Start with one repeated process. Connect its context, govern its execution, and build a digital workforce that improves with every outcome.</p>
+      <div class="enque-footer-actions enque-footer-actions--center"><a class="enque-footer-button enque-footer-button--light" href="contact/">Request a demo <span aria-hidden="true">→</span></a><a class="enque-footer-text-link" href="mailto:hello@enque.ai">hello@enque.ai</a></div>
+      <div class="enque-proof-row"><div><strong>24/7</strong><span>Workforce availability</span></div><div><strong>One</strong><span>Shared context layer</span></div><div><strong>Every run</strong><span>Governed and traceable</span></div></div>
+    </section>
+    <section class="enque-footer-nav">
+      <div class="enque-footer-brand"><img src="/bluecolorsite/assets/enque-logo-light.svg" alt="enque.ai"><p>The digital workforce for agency that never sleeps.</p><a href="mailto:hello@enque.ai">hello@enque.ai</a></div>
+      <nav aria-label="Platform footer navigation"><span>Platform</span><a href="#work">Work</a><a href="#context">Context</a><a href="#intelligence">Intelligence</a><a href="#control">Control</a></nav>
+      <nav aria-label="Company footer navigation"><span>Company</span><a href="#platform">About Enque</a><a href="#roadmap">Roadmap</a><a href="contact/">Contact</a><a href="https://github.com/kamalkavin-tech/Enque-digimaxx" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
+      <div class="enque-footer-note"><span>System status</span><strong><i></i>Digital workforce online</strong><p>Work → Context → Intelligence → Control → Better execution</p></div>
+    </section>
+    <div class="enque-footer-bottom"><span>© 2026 enque.ai. All rights reserved.</span><a href="#top">Back to top ↑</a></div>`;
+
+  const patchSiteFooter = () => {
+    const footer = document.querySelector('footer.bg-primary[data-theme="dark"], footer.enque-site-footer');
+    if (!footer || footer.classList.contains('enque-site-footer')) return;
+    footer.id = 'about';
+    footer.className = 'wrapper enque-site-footer';
+    footer.removeAttribute('data-theme');
+    footer.innerHTML = footerMarkup;
+  };
+
   const patchStats = () => {
     const stats = new Map([
       ['111', ['2', 'Built work modules']],
@@ -459,6 +502,7 @@
     patchHeroConsole();
     patchPlatformPillars();
     patchLegacyTestGraphic();
+    patchSiteFooter();
     replaceCardVisual('Agency expertise that compounds at scale', 'The second brain', 'Capture, organise and retrieve agency knowledge.', [
       ['Capture', 'Conversations, documents and outcomes enter the system'],
       ['Organise', 'Knowledge connects to the correct client and project'],
