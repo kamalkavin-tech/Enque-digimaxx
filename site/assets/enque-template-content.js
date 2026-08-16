@@ -435,9 +435,9 @@
 
   const integrationMarkup = `
     <div class="enque-data-panel">
-      <span class="enque-visual-kicker">The blue data that enters Enque</span>
+      <span class="enque-visual-kicker">Live agency data</span>
       <h3>Live agency data becomes durable context.</h3>
-      <p>Marketplace changes, campaign signals, conversations, files, client history, project history, decisions, and outcomes are captured as Datablue, then made reusable by every governed agent.</p>
+      <p>Marketplace changes, campaign signals, conversations, files, client history, decisions, and outcomes become structured context that every governed agent can reuse.</p>
       <div class="enque-data-flow" aria-label="Live web to Datablue to Enque">
         <div class="enque-data-node">Live agency systems</div><span class="enque-data-arrow">→</span>
         <div class="enque-data-node">Datablue</div><span class="enque-data-arrow">→</span>
@@ -465,6 +465,70 @@
     if (!section) return;
     section.className = 'wrapper enque-integration-section';
     if (!section.querySelector('.enque-data-panel')) section.innerHTML = integrationMarkup;
+  };
+
+  const patchMidPageExperience = () => {
+    const foundationHeading = [...document.querySelectorAll('h5')].find((node) => node.textContent.trim() === 'A reusable foundation for every agency service');
+    const foundationSection = foundationHeading?.closest('section');
+    if (foundationSection && !foundationSection.classList.contains('enque-capability-system')) {
+      foundationSection.className = 'wrapper enque-capability-system';
+      foundationSection.innerHTML = `
+        <div class="enque-capability-head">
+          <div><span class="enque-visual-kicker">One foundation, every service</span><h2>Agency expertise becomes a reusable operating system.</h2></div>
+          <p>Enque connects delivery, knowledge, intelligence, and governance so every completed engagement makes the next one faster and more consistent.</p>
+        </div>
+        <div class="enque-capability-map" aria-label="The four layers of the Enque platform">
+          <article style="--layer:#7650e7"><span>01</span><small>DELIVER</small><h3>Work</h3><p>Prospects, proposals, projects, production, and specialist service modules.</p><b>2 modules live</b></article>
+          <article style="--layer:#2687e8"><span>02</span><small>REMEMBER</small><h3>Context</h3><p>Conversations, files, histories, decisions, and outcomes remain available.</p><b>6 modules in development</b></article>
+          <article style="--layer:#ff8238"><span>03</span><small>IMPROVE</small><h3>Intelligence</h3><p>Reusable skills, workflows, memory, routing, reasoning, and evaluation.</p><b>Compounds with every outcome</b></article>
+          <article style="--layer:#19a774"><span>04</span><small>GOVERN</small><h3>Control</h3><p>Roles, permissions, approvals, isolation, integrations, and auditability.</p><b>Every action accountable</b></article>
+        </div>
+        <div class="enque-capability-detail">
+          <article class="enque-knowledge-loop">
+            <div class="enque-detail-head"><span class="enque-visual-kicker">The agency second brain</span><h3>Knowledge compounds instead of disappearing.</h3></div>
+            <div class="enque-loop-steps">
+              <div><b>01</b><strong>Capture</strong><span>Conversations, files, signals, and outcomes enter once.</span></div>
+              <i aria-hidden="true">→</i>
+              <div><b>02</b><strong>Organise</strong><span>Context attaches to the right client, project, and service.</span></div>
+              <i aria-hidden="true">→</i>
+              <div><b>03</b><strong>Retrieve</strong><span>People and agents find what they need in natural language.</span></div>
+            </div>
+            <div class="enque-learning-return"><span>OUTCOME RECORDED</span><i></i><span>MEMORY UPDATED</span><i></i><strong>NEXT EXECUTION IMPROVES</strong></div>
+          </article>
+          <article class="enque-governance-card">
+            <span class="enque-visual-kicker">Governed by design</span><h3>Every activity carries its own operating context.</h3>
+            <div class="enque-activity-row"><span>Client launch campaign</span><b>IN PROGRESS</b></div>
+            <dl>
+              <div><dt>State</dt><dd>Review</dd></div><div><dt>Assignment</dt><dd>Campaign agent + strategist</dd></div><div><dt>Permission</dt><dd>Client workspace only</dd></div><div><dt>Approval</dt><dd>Human sign-off required</dd></div>
+            </dl>
+            <div class="enque-policy-foot"><span>✓</span><p><strong>Control policy active</strong><small>Role, source, decision, and output remain auditable.</small></p></div>
+          </article>
+        </div>`;
+    }
+
+    const expandableHeading = [...document.querySelectorAll('h3')].find((node) => node.textContent.trim() === 'Expandable by design.');
+    const expandableSection = expandableHeading?.closest('section');
+    if (expandableSection && !expandableSection.classList.contains('enque-expandable-intro')) {
+      expandableSection.className = 'wrapper enque-expandable-intro';
+      expandableSection.innerHTML = `
+        <div><span class="enque-visual-kicker">An open agency platform</span><h2>Expandable by design.</h2></div>
+        <p>Start with the workflows that matter now. Add new services, agents, and integrations without rebuilding the operating layer underneath.</p>
+        <div class="enque-expandable-tags"><span>Service modules</span><span>Shared context</span><span>Reusable skills</span><span>Governed APIs</span></div>`;
+    }
+
+    const pipeline = document.querySelector('.enque-pipeline');
+    if (pipeline && !pipeline.dataset.enqueRedesigned) {
+      pipeline.dataset.enqueRedesigned = 'true';
+      const phases = [
+        ['0', 'Foundation', 'Complete · 7 weeks', 'complete'], ['1', 'Client deliverables', 'Next · 2 weeks', 'next'],
+        ['2', 'Knowledge base', 'Planned · 4 weeks', 'planned'], ['3', 'Production studio', 'Planned · 3 weeks', 'planned'],
+        ['4', 'Module promotion', 'Planned · 3 weeks', 'planned'], ['5', 'Prospects', 'Planned · 2 weeks', 'planned'],
+        ['6', 'Content, media & RFP', 'Planned · 6 weeks', 'planned'], ['7', 'Platform completion', 'Planned · 3 weeks', 'planned'],
+      ];
+      pipeline.innerHTML = `
+        <div class="enque-pipeline-head"><div><span class="enque-visual-kicker">02 — The development pipeline</span><h2>Eight focused phases.<br>One complete digital workforce.</h2></div><div class="enque-pipeline-summary"><p>The seven-week foundation is live. Each next phase adds an agency capability to the same shared platform—not another disconnected tool.</p><div><span><i class="is-complete"></i>Complete</span><span><i class="is-next"></i>Next</span><span><i></i>Planned</span></div></div></div>
+        <ol class="enque-phase-grid">${phases.map(([number, name, meta, status]) => `<li class="is-${status}"><div><b>${number.padStart(2, '0')}</b><span>${meta}</span></div><h3>${name}</h3><small>${status === 'complete' ? 'Core platform operating' : status === 'next' ? 'Delivery layer in focus' : 'Builds on shared foundation'}</small></li>`).join('')}</ol>`;
+    }
   };
 
   const replaceCardVisual = (headingText, kicker, title, cards) => {
@@ -503,16 +567,7 @@
     patchPlatformPillars();
     patchLegacyTestGraphic();
     patchSiteFooter();
-    replaceCardVisual('Agency expertise that compounds at scale', 'The second brain', 'Capture, organise and retrieve agency knowledge.', [
-      ['Capture', 'Conversations, documents and outcomes enter the system'],
-      ['Organise', 'Knowledge connects to the correct client and project'],
-      ['Retrieve', 'Agents find context with natural-language questions'],
-    ]);
-    replaceCardVisual('Focus on outcomes, not handoffs', 'The language Enque speaks', 'Every activity has the attributes needed for governed execution.', [
-      ['State', 'Where the activity is now'],
-      ['Assignment', 'Who or what does the work'],
-      ['Execution', 'The governed workflow and output'],
-    ]);
+    patchMidPageExperience();
     patchIntegrationSection();
     patchFinalOrchestration();
   };
